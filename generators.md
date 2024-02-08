@@ -1,4 +1,17 @@
 ### Generators
+Depth-first (preorder) search of a binary tree
+```javascript
+function binaryTreeNode(value) {
+  let node = { value }
+  node[Symbol.iterator] = function* depthFirst() {
+    yield node.value;
+    if (node.leftChild) yield* node.leftChild;
+    if (node.rightChild) yield* node.rightChild;
+  }
+  return node;
+}
+```
+
 Outputs all 52 cards of a deck of cards with their respective symbol.
 ```javascript
 cardDeck = ({
